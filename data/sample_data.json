@@ -1,0 +1,130 @@
+[
+  {
+    "event_id": 1,
+    "record_id": "EVENT",
+    "record_type": "EVENT",
+    "event_name": "Holiday Party",
+    "creator_name": "Ben",
+    "time_slots": [
+      {
+        "slot_id": 1,
+        "start_time": "2026-10-02T17:00:00-04:00"
+      },
+      {
+        "slot_id": 2,
+        "start_time": "2026-10-03T17:00:00-04:00"
+      }
+    ]
+  },
+  {
+    "event_id": 2,
+    "record_id": "EVENT",
+    "record_type": "EVENT",
+    "event_name": "CS 390 Study Group",
+    "creator_name": "Joshua",
+    "time_slots": [
+      {
+        "slot_id": 3,
+        "start_time": "2026-09-28T16:00:00-04:00"
+      },
+      {
+        "slot_id": 4,
+        "start_time": "2026-09-29T16:00:00-04:00"
+      },
+      {
+        "slot_id": 5,
+        "start_time": "2026-09-30T18:00:00-04:00"
+      }
+    ]
+  },
+  {
+    "event_id": 2,
+    "record_id": "RESPONSE#1001",
+    "record_type": "RESPONSE",
+    "response_id": 1001,
+    "participant_name": "Clannys",
+    "selected_slot_ids": [
+      3,
+      5
+    ]
+  },
+  {
+    "event_id": 2,
+    "record_id": "RESPONSE#1002",
+    "record_type": "RESPONSE",
+    "response_id": 1002,
+    "participant_name": "Alex",
+    "selected_slot_ids": [
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "event_id": 2,
+    "record_id": "RESPONSE#1003",
+    "record_type": "RESPONSE",
+    "response_id": 1003,
+    "participant_name": "Diego",
+    "selected_slot_ids": []
+  },
+  {
+    "event_id": 3,
+    "record_id": "EVENT",
+    "record_type": "EVENT",
+    "event_name": "Project Meeting",
+    "creator_name": "Maya",
+    "time_slots": [
+      {
+        "slot_id": 6,
+        "start_time": "2026-10-05T10:00:00-04:00"
+      },
+      {
+        "slot_id": 7,
+        "start_time": "2026-10-05T11:00:00-04:00"
+      },
+      {
+        "slot_id": 8,
+        "start_time": "2026-10-05T12:00:00-04:00"
+      },
+      {
+        "slot_id": 9,
+        "start_time": "2026-10-05T13:00:00-04:00"
+      },
+      {
+        "slot_id": 10,
+        "start_time": "2026-10-05T14:00:00-04:00"
+      },
+      {
+        "slot_id": 11,
+        "start_time": "2026-10-05T15:00:00-04:00"
+      },
+      {
+        "slot_id": 12,
+        "start_time": "2026-10-05T16:00:00-04:00"
+      },
+      {
+        "slot_id": 13,
+        "start_time": "2026-10-05T17:00:00-04:00"
+      },
+      {
+        "slot_id": 14,
+        "start_time": "2026-10-05T18:00:00-04:00"
+      },
+      {
+        "slot_id": 15,
+        "start_time": "2026-10-05T19:00:00-04:00"
+      }
+    ]
+  },
+  {
+    "event_id": 3,
+    "record_id": "RESPONSE#1004",
+    "record_type": "RESPONSE",
+    "response_id": 1004,
+    "participant_name": "Finn",
+    "selected_slot_ids": [
+      6
+    ]
+  }
+]

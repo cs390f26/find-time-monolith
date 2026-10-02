@@ -1,8 +1,8 @@
+
 """Create the DynamoDB table used by the Find a Time application."""
 
-import boto3
-
-# Load our shared app settings instead of hard-coding values here.
+# Use our shared database connection instead of creating a separate one.
+from find_a_time.db import get_dynamodb
 from find_a_time.settings import ensure_settings
 
 
@@ -12,12 +12,8 @@ def create_table() -> None:
     # Check that all required environment settings are available.
     settings = ensure_settings()
 
-    # Connect to DynamoDB using the configured region and endpoint.
-    dynamodb = boto3.resource(
-        "dynamodb",
-        region_name=settings["AWS_DEFAULT_REGION"],
-        endpoint_url=settings["DYNAMODB_ENDPOINT_URL"],
-    )
+    # Reuse our shared DynamoDB connection.
+    dynamodb = get_dynamodb(settings)
 
     # Keep the table name configurable instead of hard-coding it.
     table_name = settings["FIND_A_TIME_TABLE_NAME"]
@@ -28,7 +24,7 @@ def create_table() -> None:
         for table in dynamodb.tables.all()
     ]
 
-    # Stop if the table already exists so the script can be run again safely.
+    # Stop if the table already exists so the script can run again safely.
     if table_name in existing_tables:
         print(f"Table '{table_name}' already exists.")
         return
@@ -41,34 +37,34 @@ def create_table() -> None:
         KeySchema=[
             {
                 "AttributeName": "event_id",
-                "KeyType": "HASH",   # partition key
+                "KeyType": "HASH",  # Partition key
             },
             {
                 "AttributeName": "record_id",
-                "KeyType": "RANGE",  # sort key
+                "KeyType": "RANGE",  # Sort key
             },
         ],
         AttributeDefinitions=[
             {
                 "AttributeName": "event_id",
-                "AttributeType": "N",  # number
+                "AttributeType": "N",  # Number
             },
             {
                 "AttributeName": "record_id",
-                "AttributeType": "S",  # string
+                "AttributeType": "S",  # String
             },
         ],
 
-        # Let DynamoDB handle capacity instead of setting fixed read/write units.
+        # Let DynamoDB manage capacity instead of setting fixed units.
         BillingMode="PAY_PER_REQUEST",
     )
 
-    # Wait until the table is ready before moving on.
+    # Wait until the table is ready before continuing.
     table.wait_until_exists()
 
     print(f"Created table '{table_name}'.")
 
 
-# Run create_table() only when this file is executed directly.
+# Run the function only when this script is executed directly.
 if __name__ == "__main__":
     create_table()

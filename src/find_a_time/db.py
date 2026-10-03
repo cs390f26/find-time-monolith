@@ -3,32 +3,46 @@
 
 import boto3
 
-from find_a_time.settings import ensure_settings
+class FindATimeStorage:
 
+    def __init__(
+        self,
+        table_name: str,
+        region_name: str,
+        endpoint_url: str | None = None,
+    ):
+        """Connect to a DynamoDB table.
 
-def get_dynamodb(settings=None):
-    """Return a DynamoDB connection using our app settings."""
+        table_name: name of the Find-A-Time table
+        region_name: AWS region (always required)
+        endpoint_url: DynamoDB Local URL, or omit for Amazon DynamoDB
+        """
 
-    # Load our configuration if it wasn't provided.
-    if settings is None:
-        settings = ensure_settings()
+        if not table_name:
+            raise ValueError("table_name is required")
 
-    # Create a DynamoDB resource using our settings.
-    return boto3.resource(
-        "dynamodb",
-        region_name=settings["AWS_DEFAULT_REGION"],
-        endpoint_url=settings["DYNAMODB_ENDPOINT_URL"],
-    )
+        if not region_name:
+            raise ValueError("region_name is required")
 
+        if endpoint_url is not None:
+            resource = boto3.resource(
+                "dynamodb",
+                region_name=region_name,
+                endpoint_url=endpoint_url,
+            )
+        else:
+            resource = boto3.resource(
+                "dynamodb",
+                region_name=region_name,
+            )
 
-def get_table():
-    """Return the configured Find a Time table."""
+        self._table = resource.Table(table_name)
 
-    # Load the settings and get our database connection.
-    settings = ensure_settings()
-    dynamodb = get_dynamodb(settings)
+    def ping(self) -> None:
+        """Check that the DynamoDB table is available."""
+        self._table.load()
 
-    # Return a reference to our table.
-    return dynamodb.Table(
-        settings["FIND_A_TIME_TABLE_NAME"]
-    )
+    def get_item(self, key):
+    """Return an item from the table."""
+        response = self._table.get_item(Key=key)
+        return response.get("Item")

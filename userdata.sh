@@ -55,9 +55,22 @@ tar -xzf \
 rm /tmp/dynamodb_local_latest.tar.gz
 
 chown -R ec2-user:ec2-user "$APP_DIR/db"
-
 # ------------------------------------------------------------
-# 4. Create persistent storage for DynamoDB Local.
+# 4. Create the Python virtual environment and install the app.
+# ------------------------------------------------------------
+
+sudo -u ec2-user \
+    /usr/bin/python3.12 -m venv "$APP_DIR/.venv"
+
+sudo -u ec2-user \
+    "$APP_DIR/.venv/bin/pip" install \
+    -r "$APP_DIR/requirements.txt"
+
+sudo -u ec2-user \
+    "$APP_DIR/.venv/bin/pip" install \
+    -e "$APP_DIR"
+# ------------------------------------------------------------
+# 5. Create persistent storage for DynamoDB Local.
 # ------------------------------------------------------------
 
 install \
@@ -87,7 +100,7 @@ source "$ENV_FILE"
 set +a
 
 # ------------------------------------------------------------
-# 6. Install the systemd service definitions.
+# 7. Install the systemd service definitions.
 # ------------------------------------------------------------
 
 cp \
@@ -104,7 +117,7 @@ systemctl enable find-a-time-db.service
 systemctl enable find-a-time-web.service
 
 # ------------------------------------------------------------
-# 7. Start DynamoDB Local.
+# 8. Start DynamoDB Local.
 # ------------------------------------------------------------
 
 systemctl start find-a-time-db.service
@@ -133,7 +146,7 @@ fi
 echo "DynamoDB Local is ready."
 
 # ------------------------------------------------------------
-# 8. Create the table and load the approved sample data.
+# 9. Create the table and load the approved sample data.
 # ------------------------------------------------------------
 
 cd "$APP_DIR"
@@ -142,7 +155,7 @@ cd "$APP_DIR"
 "$APP_DIR/.venv/bin/python" scripts/seed_data.py
 
 # ------------------------------------------------------------
-# 9. Start the Gunicorn web service.
+# 10. Start the Gunicorn web service.
 # ------------------------------------------------------------
 
 systemctl start find-a-time-web.service

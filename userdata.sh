@@ -38,19 +38,23 @@ git clone \
 chown -R ec2-user:ec2-user "$APP_DIR"
 
 # ------------------------------------------------------------
-# 3. Create the Python virtual environment and install the app.
+# # ------------------------------------------------------------
+# 3. Download DynamoDB Local.
 # ------------------------------------------------------------
 
-sudo -u ec2-user \
-    python3.12 -m venv "$APP_DIR/.venv"
+mkdir -p "$APP_DIR/db"
 
-sudo -u ec2-user \
-    "$APP_DIR/.venv/bin/pip" install \
-    -r "$APP_DIR/requirements.txt"
+curl -L \
+    "https://d1ni2b6xgvw0s0.cloudfront.net/dynamodb_local_latest.tar.gz" \
+    -o /tmp/dynamodb_local_latest.tar.gz
 
-sudo -u ec2-user \
-    "$APP_DIR/.venv/bin/pip" install \
-    -e "$APP_DIR"
+tar -xzf \
+    /tmp/dynamodb_local_latest.tar.gz \
+    -C "$APP_DIR/db"
+
+rm /tmp/dynamodb_local_latest.tar.gz
+
+chown -R ec2-user:ec2-user "$APP_DIR/db"
 
 # ------------------------------------------------------------
 # 4. Create persistent storage for DynamoDB Local.

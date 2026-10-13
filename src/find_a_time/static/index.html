@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Find a Time</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/home.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          Find a Time
+          <span class="brand-tag">
+            Create an event. Share availability. Find the best time.
+          </span>
+        </div>
+
+        <a class="btn btn-primary" href="/events/new">
+          Create event
+        </a>
+      </header>
+
+      <p id="page-message" class="event-meta">
+        Loading events...
+      </p>
+
+      <ul id="event-list" class="event-list panel"></ul>
+    </div>
+  </body>
+</html>

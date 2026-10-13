@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Create event</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/create.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          Find a Time
+          <span class="brand-tag">
+            Create an event. Share availability. Find the best time.
+          </span>
+        </div>
+
+        <a class="btn btn-primary" href="/">
+          All events
+        </a>
+      </header>
+
+      <form id="create-event-form" class="create-form">
+        <div class="create-box">
+          <h1 class="page-title">Create an event</h1>
+
+          <div class="field">
+            <label for="event-name">Event name</label>
+            <input
+              id="event-name"
+              type="text"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="field">
+            <label for="creator-name">Your name</label>
+            <input
+              id="creator-name"
+              type="text"
+              autocomplete="off"
+            />
+          </div>
+
+          <fieldset class="times-fieldset">
+            <legend>Possible times</legend>
+
+            <p class="field-help">
+              Choose 2–10 one-hour times. Each time starts at the top of the hour.
+            </p>
+
+            <div id="time-inputs">
+              <div class="field">
+                <input
+                  class="time-input"
+                  type="datetime-local"
+                  step="3600"
+                />
+              </div>
+
+              <div class="field">
+                <input
+                  class="time-input"
+                  type="datetime-local"
+                  step="3600"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="create-add">
+            <button
+              id="add-time"
+              class="btn btn-primary"
+              type="button"
+            >
+              Add time
+            </button>
+          </div>
+
+          <p id="form-message" class="field-help"></p>
+        </div>
+
+        <div class="create-actions">
+          <a class="btn btn-primary" href="/">
+            Cancel
+          </a>
+
+          <button class="btn btn-primary" type="submit">
+            Create event
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

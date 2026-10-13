@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Event Results</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/results.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          Find a Time
+          <span class="brand-tag">
+            Create an event. Share availability. Find the best time.
+          </span>
+        </div>
+
+        <div class="header-actions">
+          <a class="btn btn-primary" href="/">
+            All events
+          </a>
+
+          <a
+            id="availability-link"
+            class="btn btn-primary"
+            href="#"
+          >
+            Submit availability
+          </a>
+        </div>
+      </header>
+
+      <article class="panel results-panel">
+        <header class="results-header">
+          <h1 id="event-name" class="page-title">
+            Loading results...
+          </h1>
+
+          <p id="event-meta" class="event-meta"></p>
+        </header>
+
+        <ul
+          id="results-list"
+          class="results-list"
+        ></ul>
+
+        <div
+          id="none-available-section"
+          class="none-available"
+          hidden
+        >
+          <h2>None of the times work</h2>
+          <p id="none-available-names"></p>
+        </div>
+
+        <p
+          id="results-message"
+          class="results-footnote"
+        ></p>
+      </article>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 """Flask API for the Find a Time application."""
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 
 from find_a_time.db import (
     DatabaseUnavailableError,
@@ -107,6 +107,42 @@ def create_app(storage=None):
                 "message": "An unexpected server error occurred",
             }
         }), 500
+
+    @app.get("/")
+    def home_page():
+        """Serve the Home page."""
+
+        return send_from_directory(
+            app.static_folder,
+            "index.html",
+        )
+
+    @app.get("/events/new")
+    def create_page():
+        """Serve the Create Event page."""
+
+        return send_from_directory(
+            app.static_folder,
+            "create.html",
+        )
+
+    @app.get("/events/<event_id>/availability")
+    def availability_page(event_id):
+        """Serve the Submit Availability page."""
+
+        return send_from_directory(
+            app.static_folder,
+            "availability.html",
+        )
+
+    @app.get("/events/<event_id>/results")
+    def results_page(event_id):
+        """Serve the Results page."""
+
+        return send_from_directory(
+            app.static_folder,
+            "results.html",
+        )
 
     @app.get("/health")
     def health():

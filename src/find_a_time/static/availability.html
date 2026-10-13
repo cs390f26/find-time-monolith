@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Submit Availability</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/availability.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          Find a Time
+          <span class="brand-tag">
+            Create an event. Share availability. Find the best time.
+          </span>
+        </div>
+
+        <div class="header-actions">
+          <a class="btn btn-primary" href="/">
+            All events
+          </a>
+
+          <a id="results-link" class="btn btn-primary" href="#">
+            Results
+          </a>
+        </div>
+      </header>
+
+      <article class="panel availability-panel">
+        <header class="panel-header">
+          <h1 id="event-name" class="page-title">
+            Loading event...
+          </h1>
+
+          <p id="event-meta" class="event-meta"></p>
+        </header>
+
+        <form id="availability-form">
+          <div class="field">
+            <label for="participant-name">Your name</label>
+
+            <input
+              id="participant-name"
+              type="text"
+              autocomplete="off"
+            />
+          </div>
+
+          <fieldset class="availability-fieldset">
+            <legend>Select the times you are available</legend>
+
+            <div id="slot-options"></div>
+
+            <label class="check-option">
+              <input
+                id="none-available"
+                type="checkbox"
+              />
+
+              <span>
+                None of these times work for me
+              </span>
+            </label>
+          </fieldset>
+
+          <p id="form-message" class="field-help"></p>
+
+          <div class="panel-actions">
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >
+              Submit availability
+            </button>
+          </div>
+        </form>
+      </article>
+    </div>
+  </body>
+</html>

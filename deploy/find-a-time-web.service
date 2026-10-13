@@ -1,0 +1,20 @@
+[Unit]
+Description=Find a Time Gunicorn web server
+After=network.target find-a-time-db.service
+Requires=find-a-time-db.service
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/find-a-time
+EnvironmentFile=/etc/find-a-time.env
+
+ExecStart=/opt/find-a-time/.venv/bin/gunicorn \
+    --bind 0.0.0.0:5000 \
+    find_a_time.app:app
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

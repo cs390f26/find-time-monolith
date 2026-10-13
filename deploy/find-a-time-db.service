@@ -1,0 +1,21 @@
+[Unit]
+Description=Find a Time DynamoDB Local database
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/find-a-time
+
+ExecStart=/usr/bin/java \
+    -Djava.library.path=/opt/find-a-time/db/DynamoDBLocal_lib \
+    -jar /opt/find-a-time/db/DynamoDBLocal.jar \
+    -sharedDb \
+    -dbPath /var/lib/find-a-time-dynamodb \
+    -port 8000
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

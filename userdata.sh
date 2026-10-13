@@ -21,11 +21,9 @@ echo "Starting Find a Time deployment..."
 
 dnf install -y \
     git \
-    curl \
     python3.12 \
     python3.12-pip \
     java-17-amazon-corretto-headless
-
 # ------------------------------------------------------------
 # 2. Clone the application from GitHub.
 # ------------------------------------------------------------

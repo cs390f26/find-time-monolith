@@ -78,6 +78,10 @@ If you have a program running on port 8000, this will not work.
 
 ## Create The Find A Time Table
 
+Before doing the next steps, make sure to keep the terminal window with the database open. 
+Open a second terminal window, and navigate into the find-time-monolith repo. 
+Finally reactivate the virtul enviroment with the same command as before. 
+
 Create the table: 
 
     python scripts/create_table.py

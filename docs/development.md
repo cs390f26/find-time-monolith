@@ -10,8 +10,6 @@ Before starting, make sure the following are installed:
 - pip
 - Git
 
-Additional AWS and DynamoDB requirements will be documented as the project is implemented.
-
 ## Clone the Repository
 
 Clone the project repository:
@@ -23,6 +21,14 @@ Move into the project directory:
     cd find-time-monolith
 
 ## Install the Project
+
+Create a virtual enviroment: 
+
+    python3 -m venv .venv
+
+Run the virtual enviroment: 
+
+    source .venv/bin/activate
 
 Install the required dependencies:
 
@@ -42,4 +48,46 @@ Run the automated tests with:
 
 ## Application Setup
 
-Instructions for configuring DynamoDB, loading sample data, and starting the application will be added as those parts of the implementation are completed.
+Set up the .env file 
+
+    cp config/example.env .env
+
+## DynamoDB Setup 
+
+Make the folder for the databade: 
+
+    mkdir -p db
+
+Install DynamoDB: 
+
+    curl -o db/dynamodb_local_latest.zip https://s3.us-west-2.amazonaws.com/dynamodb-local/v2.x/dynamodb_local_latest.zip
+
+Unzip the .zip file
+
+    unzip db/dynamodb_local_latest.zip -d db
+
+Enter the folder: 
+
+    cd db
+
+Activate the database: 
+
+    java --enable-native-access=ALL-UNNAMED -jar DynamoDBLocal.jar -sharedDb -inMemory
+
+If you have a program running on port 8000, this will not work. 
+
+## Create The Find A Time Table
+
+Create the table: 
+
+    python scripts/create_table.py
+
+Seed the data (This is optional, and just shows sample data):
+
+    python scripts/seed_data.py
+
+## Activate The Application
+
+Activate the application:
+
+    python -m find_a_time.app

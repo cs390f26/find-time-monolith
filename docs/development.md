@@ -22,11 +22,11 @@ Move into the project directory:
 
 ## Install the Project
 
-Create a virtual enviroment: 
+Create a virtual environment: 
 
     python3 -m venv .venv
 
-Run the virtual enviroment: 
+Run the virtual environment: 
 
     source .venv/bin/activate
 
@@ -54,7 +54,7 @@ Set up the .env file
 
 ## DynamoDB Setup 
 
-Make the folder for the databade: 
+Make the folder for the database: 
 
     mkdir -p db
 
@@ -62,7 +62,7 @@ Install DynamoDB:
 
     curl -o db/dynamodb_local_latest.zip https://s3.us-west-2.amazonaws.com/dynamodb-local/v2.x/dynamodb_local_latest.zip
 
-Unzip the .zip file
+Unzip the ZIP file
 
     unzip db/dynamodb_local_latest.zip -d db
 
@@ -80,7 +80,7 @@ If you have a program running on port 8000, this will not work.
 
 Before doing the next steps, make sure to keep the terminal window with the database open. 
 Open a second terminal window, and navigate into the find-time-monolith repo. 
-Finally reactivate the virtul enviroment with the same command as before. 
+Finally, reactivate the virtual environment with the same command as before. 
 
 Create the table: 
 

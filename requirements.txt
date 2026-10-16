@@ -4,3 +4,4 @@ boto3
 setuptools
 flask
 gunicorn
+pytest-playwrite

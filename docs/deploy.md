@@ -30,8 +30,8 @@ This is a step-by-step guide to successfully deploying the application.
 6. Navigate to the EC2 instance panel and select "Launch Instance" 
 7. Give it the name "FindATime", and under Key Pair select vockey
 8. Under Network Settings, choose "Select existing security group"
-9. Select the FindATimeGroup
-10. Copy the userdata.sh file, and paste it in the "User data" section under Advanced Options
+9. Select "FindATimeGroup"
+10. Copy the userdata.sh file, and paste it in the "User data" section under Advanced Details
 11. Launch the instance
 12. Navigate to the Elastic IPs panel, and select your Elastic IP
 13. Under actions, select "Associate Elastic IP Address" 
@@ -92,7 +92,7 @@ It is responsible for the following tasks:
 - installing the systemd service files for the application and DynamoDB
 - starting the application
 
-## systemd
+## Systemd
 
 Find a Time uses systemd to manage the application process on EC2.
 

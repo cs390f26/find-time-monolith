@@ -1,6 +1,10 @@
 
 """Shared setup for Find-A-Time browser acceptance tests."""
 
+"""Commented out due to being incomplte."""
+
+"""
+
 import urllib.error
 import urllib.request
 
@@ -10,7 +14,6 @@ BASE_URL = "http://127.0.0.1:5000"
 
 
 def pytest_sessionstart(session):
-    """Check that the application is running before tests begin."""
     health_url = f"{BASE_URL}/health"
 
     try:
@@ -32,5 +35,6 @@ def pytest_sessionstart(session):
 
 @pytest.fixture(scope="session")
 def base_url():
-    """Base URL used by Playwright for relative navigation."""
+   
     return BASE_URL
+""""

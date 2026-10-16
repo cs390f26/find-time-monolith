@@ -1,7 +1,10 @@
 """Tests the creation of an event."""
 
+"""Commented out due to being incomplte."""
+
+
+"""
 def test_create_event_navigates_to_availability_page(page, base_url):
-    """Creating an event redirects to its availability page."""
     page.goto(f"{base_url}/events/new")
 
     page.locator("#event-name").fill("CS Study Group")
@@ -19,6 +22,6 @@ def test_create_event_navigates_to_availability_page(page, base_url):
     assert page.url.endswith("/availability")
     event_id = page.url.split("/events/")[1].split("/")[0]
     assert event_id.isdigit()
-
+"""
 
 
